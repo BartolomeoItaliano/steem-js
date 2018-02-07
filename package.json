@@ -1,9 +1,9 @@
 {
-  "name": "@steemit/steem-js",
+  "name": "steem-js-refactored",
   "version": "0.7.1",
   "description": "Steem.js the JavaScript API for Steem blockchain",
   "main": "lib/index.js",
-  "scripts": {
+    "scripts": {
     "test": "eslint --quiet src test; mocha -t 40000 --require babel-polyfill --require babel-register",
     "test-auth": "npm test -- --grep 'steem.auth'",
     "build": "npm run build-browser && npm run build-node",
@@ -17,13 +17,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/steemit/steem-js.git"
+    "url": "git+https://github.com/BartolomeoItaliano/steem-js.git"
   },
   "keywords": [
     "steem",
     "steemit",
     "blockchain",
-    "steemjs"
+    "steemjs",
+    "windows adjusted"
   ],
   "author": "Fabien (https://github.com/bonustrack)",
   "license": "MIT",
@@ -74,6 +75,7 @@
     "Fabien (https://github.com/bonustrack)",
     "James Calfee (https://github.com/jcalfee)",
     "Nilesh Suthar (https://github.com/nil1511)",
-    "Pedro Tacla Yamada (https://github.com/yamadapc)"
+    "Pedro Tacla Yamada (https://github.com/yamadapc)",
+    "Bartosz Kurek (https://github.com/bartolomeoItaliano)"
   ]
 }
