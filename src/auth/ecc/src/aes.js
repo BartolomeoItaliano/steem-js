@@ -1,4 +1,4 @@
-import secureRandom from 'secure-random';
+import secureRandom from 'secure-random-adjusted-for-webworkers';
 import ByteBuffer from 'bytebuffer';
 import crypto from 'browserify-aes';
 import assert from 'assert';

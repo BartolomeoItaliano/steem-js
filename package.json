@@ -1,6 +1,6 @@
 {
   "name": "steem-js-refactored",
-  "version": "0.7.1",
+  "version": "0.7.3",
   "description": "Steem.js the JavaScript API for Steem blockchain",
   "main": "lib/index.js",
   "scripts": {
@@ -47,7 +47,7 @@
     "detect-node": "^2.0.3",
     "ecurve": "^1.0.5",
     "lodash": "^4.16.4",
-    "secure-random": "^1.1.1",
+    "secure-random-adjusted-for-webworkers": "^1.0.0",
     "ws": "^3.3.2"
   },
   "devDependencies": {

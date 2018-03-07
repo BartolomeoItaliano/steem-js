@@ -17,7 +17,7 @@
     "bytebuffer": "^5.0.0",
     "crypto-js": "^3.1.5",
     "ecurve": "^1.0.2",
-    "secure-random": "^1.1.1"
+    "secure-random-adjusted-for-webworkers": "^1.0.0"
   },
   "author": "cryptonomex",
   "license": "BSD-2-Clause-FreeBSD",
