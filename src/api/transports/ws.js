@@ -7,9 +7,14 @@ import Transport from './base';
 let WebSocket;
 if (isNode) {
   WebSocket = require('ws'); // eslint-disable-line global-require
-} else if (typeof window !== 'undefined') {
+}
+else if (typeof window !== 'undefined') {
   WebSocket = window.WebSocket;
-} else {
+}
+else if (typeof self !== 'undefined') {
+  WebSocket = self.WebSocket;
+}
+else {
   throw new Error("Couldn't decide on a `WebSocket` class");
 }
 
@@ -17,7 +22,7 @@ const debug = newDebug('steem:ws');
 
 export default class WsTransport extends Transport {
   constructor(options = {}) {
-    super(Object.assign({id: 0}, options));
+    super(Object.assign({ id: 0 }, options));
 
     this._requests = new Map();
     this.inFlight = 0;
@@ -29,12 +34,12 @@ export default class WsTransport extends Transport {
     if (this.startPromise) {
       return this.startPromise;
     }
- 
+
     this.startPromise = new Promise((resolve, reject) => {
       this.ws = new WebSocket(this.options.websocket);
       this.ws.onerror = (err) => {
         this.startPromise = null;
-        reject(err);        
+        reject(err);
       };
       this.ws.onopen = () => {
         this.isOpen = true;
@@ -43,7 +48,7 @@ export default class WsTransport extends Transport {
         this.ws.onclose = this.onClose.bind(this);
         resolve();
       };
-    }); 
+    });
     return this.startPromise;
   }
 
@@ -87,7 +92,7 @@ export default class WsTransport extends Transport {
           id: data.id || this.id++,
           method: 'call',
           jsonrpc: '2.0',
-          params: [api, data.method, data.params]        
+          params: [api, data.method, data.params]
         }
       };
       this.inFlight++;
@@ -126,11 +131,12 @@ export default class WsTransport extends Transport {
       const err = new Error(
         // eslint-disable-next-line prefer-template
         (errorCause.message || 'Failed to complete operation') +
-          ' (see err.payload for the full error payload)'
+        ' (see err.payload for the full error payload)'
       );
       err.payload = message;
       _request.deferral.reject(err);
-    } else {
+    }
+    else {
       this.emit('track-performance', _request.message.method, Date.now() - _request.startedAt);
       _request.deferral.resolve(message.result);
     }

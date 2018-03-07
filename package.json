@@ -3,8 +3,8 @@
   "version": "0.7.1",
   "description": "Steem.js the JavaScript API for Steem blockchain",
   "main": "lib/index.js",
-    "scripts": {
-    "test": "eslint --quiet src test; mocha -t 40000 --require babel-polyfill --require babel-register",
+  "scripts": {
+    "test": "eslint --quiet src test && mocha -t 40000 --require babel-polyfill --require babel-register",
     "test-auth": "npm test -- --grep 'steem.auth'",
     "build": "npm run build-browser && npm run build-node",
     "build-browser": "cross-env rm -rf dist && cross-env NODE_ENV=production webpack",
@@ -23,8 +23,7 @@
     "steem",
     "steemit",
     "blockchain",
-    "steemjs",
-    "windows adjusted"
+    "steemjs"
   ],
   "author": "Fabien (https://github.com/bonustrack)",
   "license": "MIT",
