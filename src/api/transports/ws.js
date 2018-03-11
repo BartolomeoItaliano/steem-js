@@ -104,7 +104,9 @@ export default class WsTransport extends Transport {
 
   onError(error) {
     for (let _request of this._requests) {
-      _request.deferral.reject(error);
+      if(_request && _request.deferral) {
+        _request.deferral.reject(error);
+      }
     }
     this.stop();
   }
