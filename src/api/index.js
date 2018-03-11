@@ -254,7 +254,6 @@ class Steem extends EventEmitter {
 
         const release = this.streamBlockNumber(mode, (err, id) => {
             if (err) {
-                release();
                 callback(err);
                 return;
             }
@@ -277,7 +276,6 @@ class Steem extends EventEmitter {
 
         const release = this.streamBlock(mode, (err, result) => {
             if (err) {
-                release();
                 callback(err);
                 return;
             }
@@ -300,7 +298,6 @@ class Steem extends EventEmitter {
 
         const release = this.streamTransactions(mode, (err, transaction) => {
             if (err) {
-                release();
                 callback(err);
                 return;
             }
