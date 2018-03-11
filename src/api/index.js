@@ -297,7 +297,6 @@ class Steem extends EventEmitter {
         const release = this.streamTransactions(mode, (err, transaction) => {
             if (err) {
                 callback(err);
-                return;
             }
 
             transaction.operations.forEach(operation => {
