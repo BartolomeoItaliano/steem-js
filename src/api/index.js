@@ -206,8 +206,14 @@ class Steem extends EventEmitter {
         const update = () => {
             if (!running) return;
 
+            let keepAliveTimeout = setTimeout(function () {
+              update();
+            }, ts*15);
+
             this.getDynamicGlobalPropertiesAsync().then(
                 result => {
+                  clearTimeout(keepAliveTimeout);
+
                     const blockId = mode === 'irreversible' ?
                         result.last_irreversible_block_num :
                         result.head_block_number;
@@ -297,7 +303,6 @@ class Steem extends EventEmitter {
         const release = this.streamTransactions(mode, (err, transaction) => {
             if (err) {
                 callback(err);
-                return;
             }
 
             transaction.operations.forEach(operation => {
