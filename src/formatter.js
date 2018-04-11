@@ -183,6 +183,7 @@ module.exports = steemAPI => {
         .toISOString()
         .replace(/[^a-zA-Z0-9]+/g, "")
         .toLowerCase();
+      parentAuthor = parentAuthor.replace(/\./g, "");
       parentPermlink = parentPermlink.replace(/(-\d{8}t\d{9}z)/g, "");
       return "re-" + parentAuthor + "-" + parentPermlink + "-" + timeStr;
     },
